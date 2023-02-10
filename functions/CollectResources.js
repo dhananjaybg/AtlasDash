@@ -37,7 +37,7 @@ getProjects = async function(org, username, password)
 
   let promises = [];
   body.results.forEach(result => {
-    console.log(JSON.Stringfy(result));
+    console.log(JSON.stringify(result));
     promises.push(collection.replaceOne({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
     //promises.push(collection.insert({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
   });
