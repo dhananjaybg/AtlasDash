@@ -1,38 +1,38 @@
-exports = async function(arg){
-  // This default function will get a value and find a document in MongoDB
-  // To see plenty more examples of what you can do with functions see: 
-  // https://www.mongodb.com/docs/atlas/app-services/functions/
+exports = async function(org, username, password){
 
-  // Find the name of the MongoDB service you want to use (see "Linked Data Sources" tab)
-  var serviceName = "mongodb_atlas";
+  const promises = [
+    //getInvoices(org, username, password),
+    //getOrg(org, username, password),
+    getProjects(org, username, password)
+  ];
+  await Promise.all(promises);
+  return {"org": org, "status": "success!"};
+};
 
-  // Update these to reflect your db/collection
-  var dbName = "AtlasDash";
-  var collName = "AtlasInventory";
+getProjects = async function(org, username, password)
+{
+  
+  const refresh = context.values.get(`refreshProjectData`);
+  if (!refresh) return Promise.resolve();
 
-  // Get a collection from the context
-  var collection = context.services.get(serviceName).db(dbName).collection(collName);
+  const collection = context.services.get(`mongodb-atlas`).db(`billing`).collection(`projectdata`);
 
-  var findResult;
-  try {
-    // Get a value from the context (see "Values" tab)
-    // Update this to reflect your value's name.
-    var valueName = "value_name";
-    var value = context.values.get(valueName);
+  const args = {
+    "scheme": `https`,
+    "host": `cloud.mongodb.com`,
+    "username": username,
+    "password": password,
+    "digestAuth": true,
+    "path": `/api/atlas/v1.0/orgs/${org}/groups`
+  };
+  
+  const response = await context.http.get(args);
+  const body = JSON.parse(response.body.text());
+  if (response.statusCode != 200) throw {"error": body.detail, "fn": "getProjects", "statusCode": response.statusCodet};
 
-    // Execute a FindOne in MongoDB 
-    findResult = await collection.findOne(
-      { owner_id: context.user.id, "fieldName": value, "argField": arg},
-    );
-
-  } catch(err) {
-    console.log("Error occurred while executing findOne:", err.message);
-
-    return { error: err.message };
-  }
-
-  // To call other named functions:
-  // var result = context.functions.execute("function_name", arg1, arg2);
-
-  return { result: findResult };
+  let promises = [];
+  body.results.forEach(result => {
+    promises.push(collection.replaceOne({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
+  });
+  return Promise.all(promises);
 };
