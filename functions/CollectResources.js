@@ -16,8 +16,8 @@ getProjects = async function(org, username, password)
   const private_key = "f6cff4f7-27a3-439b-b21a-e9448ad8a8ec";
   const org_id = "5e384d3179358e03d842ead1";
 
-  const refresh = context.values.get(`refreshProjectData`);
-  if (!refresh) return Promise.resolve();
+  //const refresh = context.values.get(`refreshProjectData`);
+  //if (!refresh) return Promise.resolve();
 
   const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`AtlasInventory`);
   
