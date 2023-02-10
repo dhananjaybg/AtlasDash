@@ -41,7 +41,7 @@ getProjects = async function(org, username, password)
     promises.push(collection.replaceOne({"_id": result.id}, {"_id": result.id, "name": result.name,"Clusters":result.clusterCount}, {"upsert": true}));
     //promises.push(collection.insert({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
     if( result.clusterCount >1 ){
-      console.log("process me "+ result.links[0].href);
+      //console.log("process me "+ result.links[0].href);
       
     }
     
