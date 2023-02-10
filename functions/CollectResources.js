@@ -3,6 +3,7 @@ exports = async function(org, username, password){
   const promises = [
     //getInvoices(org, username, password),
     //getOrg(org, username, password),
+    //getProjects(org, username, password)
     getProjects(org, username, password)
   ];
   await Promise.all(promises);
@@ -15,7 +16,7 @@ getProjects = async function(org, username, password)
   const refresh = context.values.get(`refreshProjectData`);
   if (!refresh) return Promise.resolve();
 
-  const collection = context.services.get(`mongodb-atlas`).db(`billing`).collection(`projectdata`);
+  const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`AtlasInventory`);
 
   const args = {
     "scheme": `https`,
