@@ -32,17 +32,11 @@ getProjects = async function(org, username, password)
   
   const response = await context.http.get(args);
   const body = JSON.parse(response.body.text());
-  console.log("DHANANAJY ");
-  console.log("GHEVDE");
   
   if (response.statusCode != 200) throw {"error": body.detail, "fn": "getProjects", "statusCode": response.statusCodet};
 
-  console.log(response.statusCode);
- 
   let promises = [];
   body.results.forEach(result => {
-      console.log("In thre insert call");
-
     promises.push(collection.replaceOne({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
     //promises.push(collection.insert({"_id": result.id}, {"_id": result.id, "name": result.name}, {"upsert": true}));
   });
