@@ -1,6 +1,6 @@
 exports = async function(arg){
   
-  //commit chk
+  //commit chk 2 
   var master_time_stamp =  new Date();
   //logging_timestamp = Date.now();
   const username = context.values.get("username"); // "mfbroowi";
