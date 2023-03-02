@@ -1,0 +1,5 @@
+{
+    "name": "database",
+    "value": "database-secret",
+    "from_secret": true
+}

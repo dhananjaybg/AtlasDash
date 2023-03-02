@@ -1,0 +1,8 @@
+{
+    "from_secret": false,
+    "name": "CollectionName",
+    "value": {
+        "DBMeasure": "DBSizeMeasurement",
+        "Daily": "DailySummary"
+    }
+}

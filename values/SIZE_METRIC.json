@@ -1,0 +1,7 @@
+{
+    "from_secret": false,
+    "name": "SIZE_METRIC",
+    "value": {
+        "value": "GB"
+    }
+}

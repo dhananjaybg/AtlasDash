@@ -1,0 +1,17 @@
+{
+    "id": "640027afaa75c99f77e3a7f9",
+    "name": "DailyCollectInfo",
+    "type": "SCHEDULED",
+    "config": {
+        "schedule": "0 */24 * * *",
+        "skip_catchup_events": false
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "start_process"
+            }
+        }
+    }
+}

@@ -1,6 +1,34 @@
 [
     {
-        "name": "CollectResources",
+        "name": "getProjectCount",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "start_process",
+        "private": false
+    },
+    {
+        "name": "getHostIdsPerProject",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "updateDB",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "process_all_organizations",
+        "private": true
+    },
+    {
+        "name": "getDBCountAndSize",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "generate_test_data",
         "private": true
     }
 ]
