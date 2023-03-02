@@ -1,7 +1,6 @@
 exports = async function(org, username, password,master_time_stamp, project_id ,host_id ){
   
   //exports('5e384d3179358e03d842ead1','mfbroowi','f6cff4f7-27a3-439b-b21a-e9448ad8a8ec','5b6c7a944e65810c2fc488b4','atlas-dzwfvw-shard-00-02.c1xrj.mongodb.net:27017')
-
   const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
   let xPath = `/api/atlas/v1.0/groups/${project_id}/processes/${host_id}/databases`;
   let DatabasesCount = 0;
