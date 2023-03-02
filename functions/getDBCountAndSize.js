@@ -1,10 +1,14 @@
 exports = async function(org, username, password,master_time_stamp, project_id ,host_id ){
-  const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
+  
+  
   let xPath = `/api/atlas/v1.0/groups/${project_id}/processes/${host_id}/databases`;
   let DatabasesCount = 0;
   let total_data_size = 0;
   let AtlasDB = context.values.get("database");
   let Collections = context.values.get("CollectionName");
+  
+  
+  //const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
   
   const args = {
     "scheme": `https`,
