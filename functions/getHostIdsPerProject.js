@@ -1,7 +1,6 @@
 exports = async function(org,username,password, project_id ){
  
   var ProcessCount = 0;
-  
   const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
   var xPath = `/api/atlas/v1.0/groups/${project_id}/processes`;
   
