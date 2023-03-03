@@ -2,6 +2,8 @@
 
 This project enables you to build your own automated MongoDB Atlas Dashboard. It includes a MongoDB Realm application which regularly imports data from the Atlas REST API into your own Atlas cluster. It also includes a MongoDB Charts dashboard with visualizations of your Atlas Clusters data, which you can use as-is or extend to give you detailed insights into your Atlas usage.
 
+<img width="762" alt="Sample Atlas Dashboard" src="dashboard-example.png">
+
 # Setup
 Setting up this solution involves a number of steps in the Atlas web portal,
 followed by some command line scripts to be run locally. Finally you will
