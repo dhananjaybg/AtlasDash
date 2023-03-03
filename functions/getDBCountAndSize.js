@@ -55,12 +55,12 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
             
               var db_datasize =  data2.measurements.filter( (item) => { return item.name === "DATABASE_STORAGE_SIZE"; });
               
-              let filter = { 'master_time_stamp' : master_time_stamp,"project_id":project_id , "host_id": host_id};
-              let db2_size = db_datasize
-              const cnt = db2_size.push(rec.databaseName);
-              let set_fields = {$push: {"measurements": db2_size}};
+              //let filter = { 'master_time_stamp' : master_time_stamp,"project_id":project_id , "host_id": host_id};
+              //let db2_size = db_datasize
+              //const cnt = db2_size.push(rec.databaseName);
+              //let set_fields = {$push: {"measurements": db2_size}};
       
-              let update_result = await context.functions.execute("updateDB", AtlasDB , Collections.DBMeasure,filter,set_fields,true);
+              //let update_result = await context.functions.execute("updateDB", AtlasDB , Collections.DBMeasure,filter,set_fields,true);
               //the reason why we hard code[0] because we only have filtered on DATABASE_STORAGE_SIZE
               var size_x = db_datasize[0].dataPoints[0].value
               total_data_size = total_data_size + parseInt(size_x);
