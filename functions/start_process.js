@@ -18,7 +18,7 @@ exports = async function(){
     
     
     let project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
-    console.log("getProjectCount COMPLETE = " + project_ids);
+    console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
     // *************.   call "getHostIdsPerProject" *************// *************// *************// *************
     
     for (const prj_id of project_ids) {
@@ -47,7 +47,7 @@ exports = async function(){
         total_dbs_size_per_org = total_dbs_size_per_org + parseInt(total_db_size_per_project);
         
         let filter = {"master_ts" : master_time_stamp};
-        let rec_x =  {"project_id":item[record],"project_name":project_ids[item[record]],"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
+        let rec_x =  {"project_id":item[record],"project_name": project_ids[item[record]] ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
         //console.log("NEW_DBG: set_fields "+ JSON.stringify(set_fields));
         
