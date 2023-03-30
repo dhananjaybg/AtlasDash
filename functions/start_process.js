@@ -34,7 +34,7 @@ exports = async function(){
         var dbs_per_project = 0;
         var total_db_size_per_project = 0;
         
-        console.log("NEW_DBG: item>> "+ JSON.stringify(item));
+        //console.log("NEW_DBG: item>> "+ JSON.stringify(item));
         
         for (var record in item){
             res =  await context.functions.execute("getDBCountAndSize", context.values.get("org"), context.values.get("username"), context.values.get("password"),master_time_stamp, item[record],record).catch(err => { return err; });
