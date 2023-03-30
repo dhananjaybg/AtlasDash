@@ -33,7 +33,9 @@ exports = async function(org,username,password,master_ts){
       //skip empty projects
       if ( result.clusterCount >0 ){
               project_ids.push(result.id);
-              project_ids_dict.push({key : result.id,value:result.name});
+              //project_ids_dict.push({key : result.id,value:result.name});
+              
+              project_ids_dict.push({key:result.id, value: result.name});
       }
     });
     
