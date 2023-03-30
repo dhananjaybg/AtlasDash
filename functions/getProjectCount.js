@@ -29,7 +29,7 @@ exports = async function(org,username,password,master_ts){
     ProjectCount = body.totalCount;
     body.results.forEach(result => {
       ClusterCount =  ClusterCount + result.clusterCount;
-      console.log("bout projects ..." + JSON.stringify(result));
+      //console.log("bout projects ..." + JSON.stringify(result));
       //skip empty projects
       if ( result.clusterCount >0 ){
               project_ids.push(result.id);
