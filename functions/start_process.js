@@ -15,7 +15,7 @@ exports = async function(){
     let all_dbs_per_org = 0;
     let total_dbs_size_per_org = 0;
     let procs_per_org = [];
-    let project_ids = {};
+    var project_ids = {};
     
     project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
     console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
