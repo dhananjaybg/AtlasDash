@@ -24,6 +24,7 @@ exports = async function(){
     for (const prj_id of project_ids) {
         let procs =  await context.functions.execute("getHostIdsPerProject", context.values.get("org"), context.values.get("username"), context.values.get("password"),prj_id['key'] )
         .catch(err => { return err; });
+        console.logs("procs : " + JSON.stringify(procs));
         procs_per_org.push(procs);
     }
     
