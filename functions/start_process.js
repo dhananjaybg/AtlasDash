@@ -15,16 +15,17 @@ exports = async function(){
     let all_dbs_per_org = 0;
     let total_dbs_size_per_org = 0;
     let procs_per_org = [];
+    let project_ids = {};
     
-    
-    let project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
+    project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
     console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
     // *************.   call "getHostIdsPerProject" *************// *************// *************// *************
+    console.log("test dict >>>" + project_ids['5f9780dada4f8649799002a7'] );
     
     for (const prj_id of project_ids) {
         let procs =  await context.functions.execute("getHostIdsPerProject", context.values.get("org"), context.values.get("username"), context.values.get("password"),prj_id['key'] )
         .catch(err => { return err; });
-        console.log("procs : " + JSON.stringify(procs));
+        //console.log("procs : " + JSON.stringify(procs));
         procs_per_org.push(procs);
     }
     
@@ -49,6 +50,7 @@ exports = async function(){
         
         let filter = {"master_ts" : master_time_stamp};
         let hold_prj_id = item[record];
+        console.log("hold_prj_id "+ hold_prj_id);
         let x2 = project_ids[hold_prj_id];
         console.log("project_ids[hold_prj_id] "+ x2);
         
