@@ -32,7 +32,7 @@ exports = async function(org,username,password,master_ts){
       //console.log("bout projects ..." + JSON.stringify(result));
       //skip empty projects
       if ( result.clusterCount >0 ){
-              project_ids.push(result.id);
+              //project_ids.push(result.id);
               //project_ids_dict.push({key : result.id,value:result.name});
               project_ids_dict.push({key:result.id, value: result.name});
       }
@@ -54,9 +54,9 @@ exports = async function(org,username,password,master_ts){
   try{
       await collection.insertOne(res);
       console.log("Updating MongoDB "+JSON.stringify(res));
-      for (const prj_id of project_ids_dict) {
-         console.log("reading only keys:  "+JSON.stringify(prj_id['key']));
-      }
+      //for (const prj_id of project_ids_dict) {
+      //   console.log("reading only keys:  "+JSON.stringify(prj_id['key']));
+      //}
      
       
   }catch(err){
@@ -64,5 +64,5 @@ exports = async function(org,username,password,master_ts){
       return { error: err.message };
   }
 
-  return project_ids;
+  return project_ids_dict;
 };
