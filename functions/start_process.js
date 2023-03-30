@@ -49,7 +49,8 @@ exports = async function(){
         
         let filter = {"master_ts" : master_time_stamp};
         let hold_prj_id = item[record];
-        console.log("project_ids[hold_prj_id] "+ project_ids[hold_prj_id]);
+        let x2 = project_ids[hold_prj_id];
+        console.log("project_ids[hold_prj_id] "+ x2);
         
         let rec_x =  {"project_id":item[record],"project_name": project_ids[hold_prj_id] ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
