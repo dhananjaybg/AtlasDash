@@ -53,6 +53,9 @@ exports = async function(org,username,password,master_ts){
   try{
       await collection.insertOne(res);
       console.log("Updating MongoDB "+JSON.stringify(res));
+      
+      console.log("Updating MongoDB : project_ids_dict:  "+JSON.stringify(project_ids_dict));
+      
   }catch(err){
       console.log("Error occurred while inserting record to Mongo:", err.message);
       return { error: err.message };
