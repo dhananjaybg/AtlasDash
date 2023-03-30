@@ -34,6 +34,8 @@ exports = async function(){
         var dbs_per_project = 0;
         var total_db_size_per_project = 0;
         
+        console.log("NEW_DBG: item>> "+ JSON.stringify(item));
+        
         for (var record in item){
             res =  await context.functions.execute("getDBCountAndSize", context.values.get("org"), context.values.get("username"), context.values.get("password"),master_time_stamp, item[record],record).catch(err => { return err; });
             dbs_per_project = dbs_per_project + parseInt(res.count);
@@ -47,6 +49,7 @@ exports = async function(){
         let filter = {"master_ts" : master_time_stamp};
         let rec_x =  {"project_id":item[record],"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
+        //console.log("NEW_DBG: set_fields "+ JSON.stringify(set_fields));
         
         let update_result = await context.functions.execute("updateDB", AtlasDB , Collections.Daily,filter,set_fields);
     }
