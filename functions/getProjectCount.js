@@ -30,7 +30,7 @@ exports = async function(org,username,password,master_ts){
       console.log("bout projects ..." + JSON.stringify(result));
       //skip empty projects
       if ( result.clusterCount >0 ){
-              project_ids.push(result.id);
+              project_ids.push({key : result.id,value:result.name});
       }
     });
     
