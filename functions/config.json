@@ -1,17 +1,7 @@
 [
     {
-        "name": "getProjectCount",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
         "name": "start_process",
         "private": false
-    },
-    {
-        "name": "getHostIdsPerProject",
-        "private": false,
-        "disable_arg_logs": true
     },
     {
         "name": "updateDB",
@@ -19,7 +9,7 @@
         "disable_arg_logs": true
     },
     {
-        "name": "process_all_organizations",
+        "name": "generate_test_data",
         "private": true
     },
     {
@@ -28,7 +18,17 @@
         "disable_arg_logs": true
     },
     {
-        "name": "generate_test_data",
+        "name": "getHostIdsPerProject",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getProjectCount",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "process_all_organizations",
         "private": true
     }
 ]
