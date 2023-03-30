@@ -34,7 +34,6 @@ exports = async function(org,username,password,master_ts){
       if ( result.clusterCount >0 ){
               project_ids.push(result.id);
               //project_ids_dict.push({key : result.id,value:result.name});
-              
               project_ids_dict.push({key:result.id, value: result.name});
       }
     });
@@ -55,8 +54,10 @@ exports = async function(org,username,password,master_ts){
   try{
       await collection.insertOne(res);
       console.log("Updating MongoDB "+JSON.stringify(res));
-      
-      console.log("Updating MongoDB : project_ids_dict:  "+JSON.stringify(project_ids_dict));
+      for (const prj_id of project_ids_dict) {
+         console.log("reading only keys:  "+JSON.stringify(prj_id['key']));
+      }
+     
       
   }catch(err){
       console.log("Error occurred while inserting record to Mongo:", err.message);
