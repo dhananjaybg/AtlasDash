@@ -88,7 +88,7 @@ fetch_project_name = function(my_dict, my_key)
     for (const [key, value] of Object.entries(my_dict)) {
       //console.log(JSON.stringify(key), JSON.stringify(value),JSON.stringify(value['value']));
       if (value["key"] === my_key){
-          return key_val['value'];
+          return value['value'];
       }
     }
     
