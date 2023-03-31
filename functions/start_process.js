@@ -17,7 +17,7 @@ exports = async function(){
     let procs_per_org = [];
     var project_ids = {};
     
-     console.log("getProjectCount START = ");
+    console.log("getProjectCount START = ");
     project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
     console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
     // *************.   call "getHostIdsPerProject" *************// *************// *************// *************
@@ -84,10 +84,11 @@ fetch_project_name = function(my_dict, my_key)
           return key_val['value'];
       }
     }
-    */
+    
     for (const [key, value] of Object.entries(my_dict)) {
       console.log(JSON.stringify(key), JSON.stringify(value));
     }
+    */
     return null;
 };
 
