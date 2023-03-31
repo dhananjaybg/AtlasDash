@@ -51,8 +51,6 @@ exports = async function(){
         
         let filter = {"master_ts" : master_time_stamp};
         let project_name = fetch_project_name(project_ids,item[record]);
-        console.log("project_name >> "+ project_name);
-        
         let rec_x =  {"project_id":item[record],"project_name": project_name ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
         //console.log("NEW_DBG: set_fields "+ JSON.stringify(set_fields));
@@ -76,22 +74,12 @@ exports = async function(){
 
 fetch_project_name = function(my_dict, my_key)
 {
-    console.log("my_dict >> "+ JSON.stringify(my_dict));
-    /*
-    for (var key_val in my_dict){
-      console.log("record"+ JSON.stringify(key_val)+" == " + my_key)
-      if (key_val["key"] === my_key){
-          return key_val['value'];
-      }
-    }
-    */
     for (const [key, value] of Object.entries(my_dict)) {
       //console.log(JSON.stringify(key), JSON.stringify(value),JSON.stringify(value['value']));
       if (value["key"] === my_key){
           return value['value'];
       }
     }
-    
     return null;
 };
 
