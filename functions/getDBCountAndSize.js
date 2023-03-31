@@ -39,7 +39,7 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
           if (rec.databaseName == 'config' || rec.databaseName == 'local' || rec.databaseName == '__realm_sync')
             continue;
           
-          console.log("ITER DatabasesCount "+ rec.databaseName);
+          //console.log("ITER DatabasesCount "+ rec.databaseName);
 
           var xPath2 = `/api/atlas/v1.0/groups/${project_id}/processes/${host_id}/databases/${rec.databaseName}/measurements`;
           var query_str = {
