@@ -17,7 +17,7 @@ exports = async function(org,username,password,master_ts){
   var ProjectCount = 0;
   var ClusterCount = 0;
   var project_ids = [];
-  var project_ids_dict = {};
+  var project_ids_dict = [];
 
   
   try {
