@@ -53,8 +53,8 @@ exports = async function(){
         //console.log("hold_prj_id "+ hold_prj_id);
         //let x2 = project_ids[hold_prj_id];
         //console.log("project_ids[hold_prj_id] "+ x2);
-        
-        let rec_x =  {"project_id":item[record],"project_name": project_ids[hold_prj_id] ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
+        let project_name = "";
+        let rec_x =  {"project_id":item[record],"project_name": project_name ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
         //console.log("NEW_DBG: set_fields "+ JSON.stringify(set_fields));
         
