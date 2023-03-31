@@ -22,9 +22,10 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
   try {
       const response = await context.http.get(args);
       const data =  JSON.parse(response.body.text());
-      DatabasesCount = JSON.stringify(data)
+      DatabasesCount = JSON.stringify(data.totalCount)
 
       console.log("START_ DatabasesCount "+ DatabasesCount);
+      console.log("START_ data_raw "+ JSON.stringify(data));
       
       var list_dbs = [];
       list_dbs = data.results.map(function(item) {
