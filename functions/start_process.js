@@ -85,7 +85,7 @@ fetch_project_name = function(my_dict, my_key)
     }
     */
     for (const [key, value] of Object.entries(my_dict)) {
-      console.log(key, value);
+      console.log(JSON.stringify(key), JSON.stringify(value));
     }
     return null;
 };
