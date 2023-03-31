@@ -76,12 +76,16 @@ exports = async function(){
 fetch_project_name = function(my_dict, my_key)
 {
     console.log("my_dict >> "+ JSON.stringify(my_dict));
-      
+    /*  
     for (var key_val in my_dict){
       console.log("record"+ JSON.stringify(key_val)+" == " + my_key)
       if (key_val["key"] === my_key){
           return key_val['value'];
       }
+    }
+    */
+    for (const [key, value] of Object.entries(my_dict)) {
+      console.log(key, value);
     }
     return null;
 };
