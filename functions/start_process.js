@@ -75,6 +75,8 @@ exports = async function(){
 
 fetch_project_name = function(my_dict, my_key)
 {
+    console.log("my_dict >> "+ JSON.stringify(my_dict));
+      
     for (var record in my_dict){
       console.log("record"+ JSON.stringify(record)+" == " + my_key)
       if (record["key"] === my_key){
