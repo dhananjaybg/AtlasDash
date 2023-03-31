@@ -75,6 +75,21 @@ exports = async function(){
 
 };
 
+fetch_project_name = function(data_value)
+{
+    let ret_value = 1024*1024*1024
+    
+    if (data_value == "GB"){
+        ret_value = ret_value;
+    }else if(data_value == "TB"){
+        ret_value = ret_value * 1024;
+    }else{
+        ret_value = 1;
+    }
+    
+    return ret_value;
+
+};
 
 convert_by_size_metric = function(data_value)
 {
