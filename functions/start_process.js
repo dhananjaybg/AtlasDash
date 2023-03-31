@@ -49,11 +49,9 @@ exports = async function(){
         total_dbs_size_per_org = total_dbs_size_per_org + parseInt(total_db_size_per_project);
         
         let filter = {"master_ts" : master_time_stamp};
-        //let hold_prj_id = item[record];
-        //console.log("hold_prj_id "+ hold_prj_id);
-        //let x2 = project_ids[hold_prj_id];
-        //console.log("project_ids[hold_prj_id] "+ x2);
-        let project_name = "";
+        let project_name = fetch_project_name(project_ids,item[record]);
+        console.log("project_name >> "+ project_name);
+        
         let rec_x =  {"project_id":item[record],"project_name": project_name ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
         //console.log("NEW_DBG: set_fields "+ JSON.stringify(set_fields));
@@ -78,9 +76,12 @@ exports = async function(){
 fetch_project_name = function(my_dict, my_key)
 {
     let ret_value = "";
-    
-    return ret_value;
-
+    for (var record in my_dict){
+      if (record['key'] == my_key){
+            return record['value'];
+      }
+    }
+    return null;
 };
 
 convert_by_size_metric = function(data_value)
