@@ -77,7 +77,7 @@ exports = async function(){
 
 fetch_project_name = function(data_value)
 {
-    let ret_value = 1024*1024*1024
+    let ret_value = "";
     
     if (data_value == "GB"){
         ret_value = ret_value;
