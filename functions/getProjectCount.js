@@ -3,8 +3,30 @@ exports = async function(org,username,password,master_ts){
   //exports('5e384d3179358e03d842ead1','mfbroowi','f6cff4f7-27a3-439b-b21a-e9448ad8a8ec');
   
   const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
+  
+  const xPath_0 = `/api/atlas/v1.0/orgs/${org}`;
+  const args_0 = {
+    "scheme": `https`,
+    "host": `cloud.mongodb.com`,
+    "username": username,
+    "password": password,
+    "digestAuth": true,
+     "path": xPath_0
+  };
+  
+  try {
+    
+    const response = await context.http.get(args_0);
+    if (response.statusCode != 200) throw {"error": response.body.detail, "fn": "getOrgName", "statusCode": response.statusCodet};
+    //const body is needed
+    const body = JSON.parse(response.body.text());
+  }catch(err){
+    console.log("Error occurred while fetching Org Name:", err.message);
+    return { error: err.message };
+  }
+  
+  
   const xPath = `/api/atlas/v1.0/orgs/${org}/groups`;
-
   const args = {
     "scheme": `https`,
     "host": `cloud.mongodb.com`,
