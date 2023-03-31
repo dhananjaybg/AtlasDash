@@ -1,6 +1,7 @@
 exports = async function(org,username,password,master_ts){
   
   //exports('5e384d3179358e03d842ead1','mfbroowi','f6cff4f7-27a3-439b-b21a-e9448ad8a8ec');
+  const Org_Name = "";
   
   const collection = context.services.get(`mongodb-atlas`).db(`AtlasDash`).collection(`DailySummary`);
   
