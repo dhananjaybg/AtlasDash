@@ -75,9 +75,10 @@ exports = async function(){
 
 fetch_project_name = function(my_dict, my_key)
 {
-    let ret_value = "";
+  
     for (var record in my_dict){
-      if (record['key'] == my_key){
+      
+      if (record["key"] == my_key){
             return record['value'];
       }
     }
