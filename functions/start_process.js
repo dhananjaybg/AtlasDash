@@ -49,10 +49,10 @@ exports = async function(){
         total_dbs_size_per_org = total_dbs_size_per_org + parseInt(total_db_size_per_project);
         
         let filter = {"master_ts" : master_time_stamp};
-        let hold_prj_id = item[record];
-        console.log("hold_prj_id "+ hold_prj_id);
-        let x2 = project_ids[hold_prj_id];
-        console.log("project_ids[hold_prj_id] "+ x2);
+        //let hold_prj_id = item[record];
+        //console.log("hold_prj_id "+ hold_prj_id);
+        //let x2 = project_ids[hold_prj_id];
+        //console.log("project_ids[hold_prj_id] "+ x2);
         
         let rec_x =  {"project_id":item[record],"project_name": project_ids[hold_prj_id] ,"dbs_count_per_project":dbs_per_project,"dbs_size_per_project":total_db_size_per_project };
         let set_fields = {$push: { "projects": rec_x }};
@@ -75,17 +75,9 @@ exports = async function(){
 
 };
 
-fetch_project_name = function(data_value)
+fetch_project_name = function(my_dict, my_key)
 {
     let ret_value = "";
-    
-    if (data_value == "GB"){
-        ret_value = ret_value;
-    }else if(data_value == "TB"){
-        ret_value = ret_value * 1024;
-    }else{
-        ret_value = 1;
-    }
     
     return ret_value;
 
