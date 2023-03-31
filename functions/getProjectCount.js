@@ -64,6 +64,7 @@ exports = async function(org,username,password,master_ts){
       return { error: err.message };
   }
 
-  project_ids_dict = [{"key":"5d4d7ed3f2a30b18f4f88946","value":"Byrd"},{"key":"5b6c7a944e65810c2fc488b4","value":"Ghevde"}];
+  //project_ids_dict = [{"key":"5d4d7ed3f2a30b18f4f88946","value":"Byrd"},{"key":"5b6c7a944e65810c2fc488b4","value":"Ghevde"}];
+  project_ids_dict = [{"key":"5b6c7a944e65810c2fc488b4","value":"Ghevde"}];
   return project_ids_dict;
 };
