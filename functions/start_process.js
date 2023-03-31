@@ -17,6 +17,7 @@ exports = async function(){
     let procs_per_org = [];
     var project_ids = {};
     
+     console.log("getProjectCount START = ");
     project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
     console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
     // *************.   call "getHostIdsPerProject" *************// *************// *************// *************
