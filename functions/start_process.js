@@ -17,11 +17,10 @@ exports = async function(){
     let procs_per_org = [];
     var project_ids = {};
     
-    console.log("getProjectCount START = ");
     project_ids =  await context.functions.execute("getProjectCount", org, username, password,master_time_stamp).catch(err => { return err; });
-    console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
+    //console.log("getProjectCount COMPLETE = " +JSON.stringify(project_ids));
     // *************.   call "getHostIdsPerProject" *************// *************// *************// *************
-    console.log("test dict >>>" + project_ids['5f9780dada4f8649799002a7'] );
+    //console.log("test dict >>>" + project_ids['5f9780dada4f8649799002a7'] );
     
     for (const prj_id of project_ids) {
         let procs =  await context.functions.execute("getHostIdsPerProject", context.values.get("org"), context.values.get("username"), context.values.get("password"),prj_id['key'] )
