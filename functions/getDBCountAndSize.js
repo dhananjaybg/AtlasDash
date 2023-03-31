@@ -3,6 +3,7 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
   
   let xPath = `/api/atlas/v1.0/groups/${project_id}/processes/${host_id}/databases`;
   let DatabasesCount = 0;
+  let DatabasesCountActual = 0;
   let total_data_size = 0;
   let AtlasDB = context.values.get("database");
   let Collections = context.values.get("CollectionName");
@@ -24,8 +25,8 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
       const data =  JSON.parse(response.body.text());
       DatabasesCount = JSON.stringify(data.totalCount)
 
-      console.log("START_ DatabasesCount "+ DatabasesCount);
-      console.log("START_ data_raw "+ JSON.stringify(data));
+     //console.log("START_ DatabasesCount "+ DatabasesCount);
+      //console.log("START_ data_raw "+ JSON.stringify(data));
       
       var list_dbs = [];
       list_dbs = data.results.map(function(item) {
@@ -38,6 +39,8 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
           //skip if these are 
           if (rec.databaseName == 'config' || rec.databaseName == 'local' || rec.databaseName == '__realm_sync')
             continue;
+          
+          DatabasesCountActual = DatabasesCountActual + 1;
           
           //console.log("ITER DatabasesCount "+ rec.databaseName);
 
@@ -77,6 +80,7 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
             //reset the counters ;
             total_data_size = 0 ;
             DatabasesCount = 0;
+            DatabasesCountActual = 0;
           }
       }
 
@@ -87,5 +91,5 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
     };
   }
   
-  return { "count": DatabasesCount, "size" :total_data_size };
+  return { "count": DatabasesCountActual, "size" :total_data_size };
 };
