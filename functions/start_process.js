@@ -77,10 +77,10 @@ fetch_project_name = function(my_dict, my_key)
 {
     console.log("my_dict >> "+ JSON.stringify(my_dict));
       
-    for (var record in my_dict){
-      console.log("record"+ JSON.stringify(record)+" == " + my_key)
-      if (record["key"] === my_key){
-          return record['value'];
+    for (var key_val in my_dict){
+      console.log("record"+ JSON.stringify(key_val)+" == " + my_key)
+      if (key_val["key"] === my_key){
+          return key_val['value'];
       }
     }
     return null;
