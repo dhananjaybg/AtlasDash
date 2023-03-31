@@ -20,6 +20,8 @@ exports = async function(org,username,password,master_ts){
     if (response.statusCode != 200) throw {"error": response.body.detail, "fn": "getOrgName", "statusCode": response.statusCodet};
     //const body is needed
     const body = JSON.parse(response.body.text());
+    console.log("THE BODY"+ JSON.stringify(body));
+    
   }catch(err){
     console.log("Error occurred while fetching Org Name:", err.message);
     return { error: err.message };
