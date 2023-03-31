@@ -24,8 +24,11 @@ exports = async function(org, username, password,master_time_stamp, project_id ,
       const data =  JSON.parse(response.body.text());
       DatabasesCount = JSON.stringify(data.totalCount)
 
+      console.log("START_ DatabasesCount "+ DatabasesCount);
+      
       var list_dbs = [];
       list_dbs = data.results.map(function(item) {
+          
           return item.databaseName;
       });
      
